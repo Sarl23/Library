@@ -54,24 +54,48 @@ public class Catalog implements CatalogService {
 
     @Override
     public List<Book> findByTitle(String title) {
-        return null;
+        List <Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                result.add(book);
+                
+            }
+            
+        }
+        return result;
     }
 
     @Override
-    public List<Book> findByGenre(Genre Genre) {
-        return null;
+    public List<Book> findByGenre(Genre genre) {
+        List <Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getGenre()== genre ) {
+                result.add(book);
+                
+            }
+            
+        }
+        return result;
     }
 
     @Override
     public void changeStatus(String isbn, BookStatus status) {
+        if (status==null) {
+            throw new BookDataInvalidOrEmptyException("El estado no puede ser nulo");
+            
+        }
+        Book book=findByIsbn(isbn);
+        book.setStatus(status);
     }
 
     @Override
     public void deleteBook(String isbn) {
+        Book book=findByIsbn(isbn);
+        books.remove(book);
     }
 
     @Override
     public List<Book> listAll() {
-        return null;
+        return new ArrayList<>(books);
     }
 }
