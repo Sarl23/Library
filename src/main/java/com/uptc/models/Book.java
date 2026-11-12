@@ -7,62 +7,62 @@ package com.uptc.models;
  */
 public class Book {
     String isbn;
-    String titulo;
+    String title;
     String autor;
-    String genero;
-    String estado;
+    String genre;
+    String status;
 
-    public Book(String isbn, String titulo, String autor, String genero, String estado) {
+    public Book(String isbn, String title, String autor, String genre, String status) {
         this.isbn = isbn;
-        this.titulo = titulo;
+        this.title = title;
         this.autor = autor;
-        this.genero = genero;
-        this.estado = estado;
+        this.genre = genre;
+        this.status = status;
     }
 
     public String getIsbn() {
         return isbn;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
     public String getAutor() {
         return autor;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getGenre() {
+        return genre;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getStatus() {
+        return status;
     }
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "Book" + "\nisbn=" + isbn + "\ntitulo=" + titulo + "\nautor=" + autor + "\ngenero=" + genero + "\nestado=" + estado;
+        return "Book" + "\nisbn=" + isbn + "\ntitulo=" + title + "\nautor=" + autor + "\ngenero=" + genre + "\nestado=" + status;
     }
     
     
