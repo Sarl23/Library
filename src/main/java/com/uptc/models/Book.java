@@ -59,6 +59,11 @@ public class Book {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Book" + "\nisbn=" + isbn + "\ntitulo=" + titulo + "\nautor=" + autor + "\ngenero=" + genero + "\nestado=" + estado;
+    }
     
     
 }
