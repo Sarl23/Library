@@ -9,10 +9,10 @@ public class Book {
     String isbn;
     String title;
     String autor;
-    String genre;
-    String status;
+    Genre genre;
+    BookStatus status;
 
-    public Book(String isbn, String title, String autor, String genre, String status) {
+    public Book(String isbn, String title, String autor, Genre genre, BookStatus status) {
         this.isbn = isbn;
         this.title = title;
         this.autor = autor;
@@ -32,11 +32,11 @@ public class Book {
         return autor;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public String getStatus() {
+    public BookStatus getStatus() {
         return status;
     }
 
@@ -52,11 +52,11 @@ public class Book {
         this.autor = autor;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookStatus status) {
         this.status = status;
     }
 
