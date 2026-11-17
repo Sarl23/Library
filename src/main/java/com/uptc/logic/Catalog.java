@@ -11,12 +11,13 @@ import java.util.List;
 
 public class Catalog implements CatalogService {
 
-    private List<Book> books;
+    private final List<Book> books;
 
     public Catalog() {
         books = new ArrayList<>();
     }
 
+    @Override
     public void addBook(Book book) {
         if (book == null) {
             throw new BookDataInvalidOrEmptyException("El libro no puede ser nulo");
@@ -43,6 +44,7 @@ public class Catalog implements CatalogService {
         return false;
     }
     
+    @Override
     public Book findByIsbn(String isbn){
         for (Book book : books) {
             if (book.getIsbn().equalsIgnoreCase(isbn)) {
