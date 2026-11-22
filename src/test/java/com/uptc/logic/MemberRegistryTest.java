@@ -59,7 +59,7 @@ public class MemberRegistryTest {
         service.register(new Member("1", "Ana", MembershipType.STUDENT));
         service.register(new Member("2", "Andres", MembershipType.STUDENT));
         service.remove("1");
-        assertEquals(0, service.listAll().size());
+        assertEquals(1, service.listAll().size());
     }
     @Test
     public void removeNotFoundThrows() {
