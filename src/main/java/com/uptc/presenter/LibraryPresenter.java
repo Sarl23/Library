@@ -124,5 +124,99 @@ public class LibraryPresenter {
             return "Devolución registrada:\n" + loan;
         });
     }
+    
+    public Response overdueReport(String dateText) {
+        return run(() -> {
+            LocalDate date = parseDate(dateText);
+            return format("Préstamos vencidos al " + date, reports.overdueLoans(date));
+        });
+    }
+
+    public Response memberHistory(String memberId) {
+        return run(() -> {
+            String id = validateMemberId(memberId);
+            return format("Historial del socio " + id, reports.memberHistory(id));
+        });
+    }
+
+    public Response sortedCatalog() {
+        return run(() -> format("Catálogo ordenado por título", reports.catalogSortedByTitle()));
+    }
+    
+    public static String validateIsbn(String isbn) {
+        if (isbn == null || isbn.isBlank()) {
+            throw new InvalidInputException("El ISBN no puede estar vacío.");
+        }
+        String digits = isbn.trim().replace("-", "");
+        if (!digits.matches("\\d{10,13}")) {
+            throw new InvalidInputException("El ISBN debe tener entre 10 y 13 dígitos (se permiten guiones).");
+        }
+        return digits;
+    }
+    
+    public static String validateText(String field, String value) {
+        if (value == null || value.isBlank()) {
+            throw new InvalidInputException(field + " no puede estar vacío.");
+        }
+        String clean = value.trim();
+        if (clean.length() > MAX_TEXT) {
+            throw new InvalidInputException(field + " no puede superar " + MAX_TEXT + " caracteres.");
+        }
+        return clean;
+    }
+    
+    public static String validateMemberId(String id) {
+        if (id == null || id.isBlank()) {
+            throw new InvalidInputException("El id del socio no puede estar vacío.");
+        }
+        String clean = id.trim();
+        if (!MEMBER_ID.matcher(clean).matches()) {
+            throw new InvalidInputException("El id del socio debe tener de 1 a 15 letras o números.");
+        }
+        return clean;
+    }
+    
+    public static Genre parseGenre(String genre) {
+        if (genre == null || genre.isBlank()) {
+            throw new InvalidInputException("Debe elegir un género.");
+        }
+        try {
+            return Genre.valueOf(genre.trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new InvalidInputException("Género no válido: " + genre.trim());
+        }
+    }
+
+    public static MembershipType parseMembershipType(String type) {
+        if (type == null || type.isBlank()) {
+            throw new InvalidInputException("Debe elegir un tipo de socio.");
+        }
+        try {
+            return MembershipType.valueOf(type.trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new InvalidInputException("Tipo de socio no válido: " + type.trim());
+        }
+    }
+    public static LocalDate parseDate(String text) {
+        if (text == null || text.isBlank()) {
+            return LocalDate.now();
+        }
+        try {
+            return LocalDate.parse(text.trim());
+        } catch (DateTimeParseException e) {
+            throw new InvalidInputException("Fecha no válida. Use el formato aaaa-mm-dd (ej. 2026-11-05).");
+        }
+    }
+    
+    private static String format(String title, List<?> items) {
+        if (items == null || items.isEmpty()) {
+            return title + ": no hay resultados.";
+        }
+        StringBuilder sb = new StringBuilder(title).append(" (").append(items.size()).append("):\n");
+        for (int i = 0; i < items.size(); i++) {
+            sb.append(i + 1).append(". ").append(items.get(i)).append('\n');
+        }
+        return sb.toString();
+    }
 
 }
