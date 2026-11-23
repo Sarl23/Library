@@ -1,10 +1,7 @@
 package com.uptc.models;
 
 import com.uptc.exceptions.InvalidMemberException;
-
-/**
- * Socio de la biblioteca. El id es único (lo valida MemberService).
- */
+//
 public class Member {
 
     private final String id;
