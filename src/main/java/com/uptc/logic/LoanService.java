@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Servicio de préstamos. Los demás módulos dependen de esta interfaz.
  *
- * @author Grupo 3
+ * @author johann
  */
 public interface LoanService {
 

@@ -3,7 +3,7 @@ package com.uptc.exceptions;
 /**
  * No existe un préstamo activo para el libro indicado. Unchecked.
  *
- * @author Grupo 3
+ * @author johann
  */
 public class LoanNotFoundException extends RuntimeException {
 

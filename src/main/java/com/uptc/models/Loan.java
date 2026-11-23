@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * Préstamo de un libro a un socio. La fecha de devolución es null mientras
  * el préstamo siga activo.
  *
- * @author Grupo 3
+ * @author johann
  */
 public class Loan {
 

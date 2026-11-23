@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * La fecha de devolución es anterior a la fecha del préstamo. Unchecked.
  *
- * @author Grupo 3
+ * @author johann
  */
 public class InvalidReturnDateException extends RuntimeException {
 

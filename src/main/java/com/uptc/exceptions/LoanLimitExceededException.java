@@ -3,7 +3,7 @@ package com.uptc.exceptions;
 /**
  * El socio ya tiene el máximo de préstamos activos de su tipo. Unchecked.
  *
- * @author Grupo 3
+ * @author johann
  */
 public class LoanLimitExceededException extends RuntimeException {
 

@@ -5,7 +5,7 @@ import com.uptc.models.BookStatus;
 /**
  * El libro no se puede prestar porque su estado no es AVAILABLE. Unchecked.
  *
- * @author Grupo 3
+ * @author johann
  */
 public class BookNotAvailableException extends RuntimeException {
 
