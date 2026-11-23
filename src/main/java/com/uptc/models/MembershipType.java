@@ -1,8 +1,5 @@
 package com.uptc.models;
-
-/**
- * Tipos de socio con sus reglas de negocio (tabla del enunciado).
- */
+//
 public enum MembershipType {
     STUDENT(3, 7, 500),
     TEACHER(5, 15, 300),
@@ -17,18 +14,15 @@ public enum MembershipType {
         this.loanDays = loanDays;
         this.finePerDay = finePerDay;
     }
-
-    /** Máximo de préstamos activos simultáneos. */
+    //
     public int getMaxLoans() {
         return maxLoans;
     }
-
-    /** Días de préstamo (para calcular la fecha de vencimiento). */
+    //
     public int getLoanDays() {
         return loanDays;
     }
-
-    /** Multa en pesos por cada día de retraso. */
+    //
     public int getFinePerDay() {
         return finePerDay;
     }
